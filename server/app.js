@@ -8,11 +8,13 @@ const logger = require('koa-logger')
 
 const index = require('./routes/admin/index')
 const users = require('./routes/users')
+const uploads = require('./routes/admin/upload')
 
 const cors = require('koa2-cors');
 app.use(cors());
 
 require('./plugins/db')(app)
+
 
 // error handler
 onerror(app)
@@ -40,6 +42,7 @@ app.use(async (ctx, next) => {
 // routes
 app.use(index.routes({mergeParams: true}), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
+app.use(uploads.routes(), uploads.allowedMethods())
 
 
 // error-handling
