@@ -9,6 +9,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 import http from './http'
 
+import './style.css'
+
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 
