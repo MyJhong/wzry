@@ -5,9 +5,11 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
+const jwtKoa = require('koa-jwt')
+const ok = require('assert')
 
 const index = require('./routes/admin/index')
-const users = require('./routes/users')
+const users = require('./routes/admin/users')
 const uploads = require('./routes/admin/upload')
 
 const cors = require('koa2-cors');

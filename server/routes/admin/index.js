@@ -1,15 +1,10 @@
 const router = require('koa-router')()
-
+const auth = require('../../token/auth')
+const resource = require('../../token/resource')
 
 router
   .prefix('/admin/api/rest/:resource')
-  .all('*', async (ctx, next) => {
-    const str = ctx.params.resource
-    const arr = str.split("/", 1).toString()
-    const modelName = require('inflection').classify(arr)
-    ctx.Model = require(`../../models/${modelName}`)
-    await next()
-  })
+  .use('*', auth(), resource())
   .post('/', async (ctx) => {
     const model = await ctx.Model.create(ctx.request.body)
     ctx.body= model

@@ -1,31 +1,53 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
+// 登录页面
+import Login from '@/components/Login'
+
+// 后台界面
 import Main from '@/components/Main'
 
+// 分类
 import CategoryEdit from '@/components/CategoryEdit'
 import CategoryList from '@/components/CategoryList'
 
+// 物品
 import ItemEdit from '@/components/ItemEdit'
 import ItemList from '@/components/ItemList'
 
+// 英雄
 import HeroEdit from '@/components/HeroEdit'
 import HeroList from '@/components/HeroList'
 
+// 新闻
 import ArticleEdit from '@/components/ArticleEdit'
 import ArticleList from '@/components/ArticleList'
 
+// 广告
 import AdEdit from '@/components/AdEdit'
 import AdList from '@/components/AdList'
+
+// 管理员
+import AdminUserEdit from '@/components/AdminUserEdit'
+import AdminUserList from '@/components/AdminUserList'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    // 登录
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    // 后台页面
     {
       path: '/',
       name: 'main',
       component: Main,
       children: [
+        // 分类
         {
           path: '/categories/create',
           component: CategoryEdit
@@ -39,6 +61,7 @@ export default new Router({
           component: CategoryEdit,
           props: true
         },
+        // 物品
         {
           path: '/items/create',
           component: ItemEdit
@@ -52,6 +75,7 @@ export default new Router({
           component: ItemEdit,
           props: true
         },
+        // 英雄
         {
           path: '/heroes/create',
           component: HeroEdit
@@ -65,6 +89,7 @@ export default new Router({
           component: HeroEdit,
           props: true
         },
+        // 新闻
         {
           path: '/articles/create',
           component: ArticleEdit
@@ -78,6 +103,7 @@ export default new Router({
           component: ArticleEdit,
           props: true
         },
+        // 广告
         {
           path: '/ads/create',
           component: AdEdit
@@ -89,6 +115,20 @@ export default new Router({
         {
           path: '/ads/edit/:id',
           component: AdEdit,
+          props: true
+        },
+        // 管理员
+        {
+          path: '/admin_users/create',
+          component: AdminUserEdit
+        },
+        {
+          path: '/admin_users/list',
+          component: AdminUserList
+        },
+        {
+          path: '/admin_users/edit/:id',
+          component: AdminUserEdit,
           props: true
         }
       ]
