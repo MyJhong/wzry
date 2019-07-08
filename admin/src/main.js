@@ -16,6 +16,21 @@ Vue.use(ElementUI)
 
 Vue.prototype.$http = http
 
+Vue.mixin({
+  computed: {
+    uploadUrl () {
+      return this.$http.defaults.baseURL + '/upload'
+    }
+  },
+  methods: {
+    getAuthHeaders () {
+      return {
+        Authorization: `Bearer ${localStorage.token || ''}`
+      }
+    }
+  }
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
