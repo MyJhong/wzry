@@ -12,7 +12,7 @@ router.post('/login', async (ctx, next) => {
   assert(isValid, 422, '密码错误')
   const jwt = require('jsonwebtoken')
   const token = jwt.sign({id: user._id}, 'Jhong')
-  ctx.body = {token}
+  ctx.body = {token, username}
 })
 
 

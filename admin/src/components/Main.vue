@@ -65,7 +65,8 @@
             <el-dropdown-item>删除</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-        <span>Jhong</span>
+        <span>{{username}}</span>
+        <el-button type="primary" @click="logout" class="out" size="mini">登出</el-button>
       </el-header>
 
       <el-main>
@@ -96,8 +97,33 @@ export default {
       address: '上海市普陀区金沙江路 1518 弄'
     }
     return {
-      tableData: Array(20).fill(item)
+      tableData: Array(20).fill(item),
+      username: localStorage.username
+    }
+  },
+  methods: {
+    logout () {
+      var _this = this
+      this.$confirm('确认退出吗?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消'
+      }).then(() => {
+        localStorage.clear()
+        _this.$router.push('/login')
+        this.$message({
+          type: 'success',
+          message: '登出成功!'
+        })
+      }).catch(() => {
+
+      })
     }
   }
 }
 </script>
+
+<style scoped>
+.out {
+  margin-left: 20px;
+}
+</style>
