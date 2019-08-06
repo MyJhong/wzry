@@ -1,13 +1,17 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <router-view/>
+    <foot></foot>
   </div>
 </template>
 
 <script>
+import Foot from './components/foot/foot'
 export default {
-  name: 'App'
+  name: 'Main',
+  components: {
+    Foot
+  }
 }
 </script>
 
