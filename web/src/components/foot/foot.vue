@@ -1,4 +1,6 @@
 <template>
+  <div>
+    <div class="mon" v-show="!no_select" @click="close"></div>
     <div class="foot" ref="foot">
         <div class="button"  ref="button">
           <!-- stop阻止事件冒泡，prvent阻止默认事件 -->
@@ -41,6 +43,7 @@
           </div>
         </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -49,10 +52,14 @@ export default {
   data () {
     return {
       no_select: true,
-      click: 'news'
+      click: 'news' // 控制选中的图标样式
     }
   },
   methods: {
+    close () {
+      this.no_select = false
+      this.select()
+    },
     news () {
       console.log(1)
       this.click = 'news'
@@ -61,14 +68,17 @@ export default {
     record () {
       console.log(2)
       this.click = 'record'
+      this.$router.push('/record')
     },
     mall () {
       console.log(3)
       this.click = 'mall'
+      this.$router.push('/mall')
     },
     my () {
       console.log(4)
       this.click = 'my'
+      this.$router.push('/my')
     },
     text () {
       console.log(5)
@@ -167,6 +177,12 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  .mon
+    position fixed
+    top 0
+    background-color rgba(0,0,0,0.1)
+    height 100vh
+    width 100%
   .foot
     // fixed布局以窗口为定位
     position fixed

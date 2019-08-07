@@ -8,6 +8,10 @@ export default new Router({
   routes: [
     {
       path: '/',
+      redirect: '/news'
+    },
+    {
+      path: '/news',
       name: 'Main',
       component: Main
     }
