@@ -3,9 +3,6 @@
   <div class="mon" v-show="mon" @click="close"></div>
   <div class="header">
     <div class="circle" @click="setting">
-      <!-- <svg width="100%" height="50px" version="1.1" xmlns="http://www.w3.org/2000/svg">
-        <circle class="circle-img" r="20" cx="25" cy="25"/>
-      </svg> -->
     </div>
     <ul class="select">
       <li class="option" :class="{click: click == 'recommend'}" @click="recommend">推荐</li>
@@ -14,8 +11,15 @@
       <li class="option" :class="{click: click == 'hero'}" @click="hero">英雄</li>
       <li class="option" :class="{click: click == 'live_broadcast'}" @click="live_broadcast">直播</li>
     </ul>
-    <div class="search">
+    <div class="search" @click="search">
       <img src="./search.png" height="28px" width="28px" />
+    </div>
+    <div class="search_html" ref="search_html">
+      <div class="search_box">
+        <img src="./search.png" height="28px" width="28px" />
+        <input class="box" ref="box"  placeholder="请输入要搜索的内容" v-model="query"/>
+      </div>
+      <div class="back" @click="back"></div>
     </div>
     <div class="setting" ref="setting">
       <div class="car">
@@ -66,6 +70,7 @@ export default {
       username: 'Jhong',
       click: 'recommend',
       mon: false,
+      query: '',
       list: [
         '与我相关',
         '活动中心',
@@ -76,6 +81,13 @@ export default {
     }
   },
   methods: {
+    back () {
+      this.$refs.search_html.style.transform = ''
+    },
+    search () {
+      this.$refs.search_html.style.transition = 'all 0.5s'
+      this.$refs.search_html.style.transform = 'translateX(0)'
+    },
     setting () {
       if (!this.mon) {
         this.$refs.setting.style.transition = 'all 0.5s'
@@ -121,6 +133,36 @@ export default {
     overflow hidden
     border-bottom 1px solid #f0f0f0
     width 100%
+    .search_html
+      position fixed
+      top 0
+      bottom 0
+      left 0
+      right 0
+      background-color rgba(255,255,255,1)
+      transform translateX(100%)
+      z-index 49
+      .search_box
+        display: flex
+        position absolute
+        align-items: center
+        box-sizing: border-box
+        width: 100%
+        padding: 0 10px
+        height: 50px
+        .box
+          width 75vw
+          margin: 0 20px
+          line-height: 25px
+          border 1px solid #cccccc
+      .back
+        float right
+        width 15px
+        height 15px
+        border 3px solid #cccccc
+        border-left transparent
+        border-bottom transparent
+        transform translate(-.3rem, .34rem) rotate(45deg)
     .setting
       position fixed
       top 0
