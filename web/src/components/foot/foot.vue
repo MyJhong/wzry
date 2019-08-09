@@ -99,7 +99,7 @@ export default {
         this.$refs.foot.style.transition = 'all 1s'
         this.$refs.foot.style.borderRadius = '12px 12px 0 0'
         this.$refs.foot.style.height = '5rem'
-        this.$refs.foot.style.background = 'rgba(255,255,255,0.8)'
+        this.$refs.foot.style.background = 'rgba(255,255,255,.9)'
         this.$refs.button.style.transition = 'all 2.5s'
         this.$refs.button.style.transform = 'translateY(3rem) scale(0.6) rotate(45deg)'
         this.$refs.news.style.transition = 'all 1s'
@@ -188,7 +188,6 @@ export default {
     position fixed
     bottom 0
     height 1.3rem
-    background-color red
     width 100%
     background rgba(255,255,255,1)
     box-shadow 0px 0.2308rem 0.5385rem 0px rgba(0, 0, 0, 0.29)

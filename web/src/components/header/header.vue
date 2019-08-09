@@ -20,6 +20,9 @@
         <input class="box" ref="box"  placeholder="请输入要搜索的内容" v-model="query"/>
       </div>
       <div class="back" @click="back"></div>
+      <div class="hot">
+        <h1>热门搜索</h1>
+      </div>
     </div>
     <div class="setting" ref="setting">
       <div class="car">
@@ -150,6 +153,7 @@ export default {
         width: 100%
         padding: 0 10px
         height: 50px
+        border-bottom 1px solid #cccccc
         .box
           width 75vw
           margin: 0 20px
